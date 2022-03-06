@@ -3,7 +3,7 @@
  const dotenv = require('dotenv');
  const db = require('./db/dbConnect');
  const { todoRoute } = require('./Route/todoRoute');
-
+const cors = require('cors')
  //dotenv config
  dotenv.config();
 
@@ -12,6 +12,9 @@
 
  const app = express();
 
+ app.use(cors({
+     origin:"https://mern-todolist.netlify.app"
+ }))
  app.use(express.json());
 
  app.use('/api' , todoRoute)
